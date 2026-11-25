@@ -8,6 +8,7 @@ import StepCake from './components/StepCake'
 import StepMemories from './components/StepMemories'
 import StepReasons from './components/StepReasons'
 import StepLetter from './components/StepLetter'
+import StepForever from './components/StepForever'
 
 export default function App() {
   // Step 0: Lock / Mystery Box
@@ -16,6 +17,7 @@ export default function App() {
   // Step 3: Polaroid Memory Lane
   // Step 4: Reasons Why I Love You
   // Step 5: Love Letter & Birthday Coupons
+  // Step 6: Can I be with you forever?
   const [step, setStep] = useState(0)
   const [hasInteracted, setHasInteracted] = useState(false)
 
@@ -31,6 +33,7 @@ export default function App() {
     { title: 'Memories' },
     { title: 'Reasons' },
     { title: 'Letter' },
+    { title: 'Forever' },
   ]
 
   return (
@@ -82,7 +85,8 @@ export default function App() {
           {step === 2 && <StepCake key="step-2" onNext={() => setStep(3)} />}
           {step === 3 && <StepMemories key="step-3" onNext={() => setStep(4)} />}
           {step === 4 && <StepReasons key="step-4" onNext={() => setStep(5)} />}
-          {step === 5 && <StepLetter key="step-5" onRestart={() => setStep(0)} />}
+          {step === 5 && <StepLetter key="step-5" onRestart={() => setStep(0)} onNext={() => setStep(6)} />}
+          {step === 6 && <StepForever key="step-6" onRestart={() => setStep(0)} />}
         </AnimatePresence>
       </main>
 

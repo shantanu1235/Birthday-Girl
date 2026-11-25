@@ -10,7 +10,7 @@ const COUPONS = [
   { id: 4, title: 'Unlimited Hugs & Pampering 💕', desc: 'Never expires. Can be redeemed an unlimited number of times.' },
 ]
 
-export default function StepLetter({ onRestart }) {
+export default function StepLetter({ onRestart, onNext }) {
   const [redeemed, setRedeemed] = useState({})
 
   const handleRedeem = (id) => {
@@ -139,8 +139,21 @@ export default function StepLetter({ onRestart }) {
           })}
         </div>
 
-        {/* Replay Button */}
+        {/* Next Final Step Button */}
         <div className="pt-6">
+          <motion.button
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={onNext}
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white font-bold text-base shadow-xl shadow-rose-300 hover:shadow-rose-400/80 transition-all flex items-center justify-center gap-2 mx-auto group cursor-pointer"
+          >
+            <span>One Last Question For You... 💍</span>
+            <span className="text-white group-hover:translate-x-1 transition-transform">➔</span>
+          </motion.button>
+        </div>
+
+        {/* Replay Button */}
+        <div className="pt-3">
           <button
             onClick={onRestart}
             className="inline-flex items-center gap-2 text-xs font-medium text-slate-500 hover:text-rose-600 transition-colors py-2 px-4 rounded-full border border-slate-200 hover:border-rose-200 bg-white/60"

@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight, Heart, Sparkles, Image as ImageIcon } from '
 const MEMORIES = [
   {
     id: 1,
-    url: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&auto=format&fit=crop&q=80',
+    url: '/photo17.jpg',
     title: 'That Priceless Smile ✨',
     date: 'Day 1 to Forever',
     note: 'The very first time I saw your genuine laugh, I knew my heart was in trouble.',
@@ -15,7 +15,7 @@ const MEMORIES = [
   },
   {
     id: 2,
-    url: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&auto=format&fit=crop&q=80',
+    url: '/photo3.jpg',
     title: 'Our Late Night Talks 🌙',
     date: 'Endless Chats',
     note: 'From talking about random things to sharing deepest secrets, every second with you feels like home.',
@@ -23,7 +23,7 @@ const MEMORIES = [
   },
   {
     id: 3,
-    url: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&auto=format&fit=crop&q=80',
+    url: '/photo1.jpg',
     title: 'My Favorite Person 💖',
     date: 'Always & Forever',
     note: 'No matter how chaotic the world gets, you will always be my peace.',
@@ -31,7 +31,7 @@ const MEMORIES = [
   },
   {
     id: 4,
-    url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&auto=format&fit=crop&q=80',
+    url: '/photo13.jpg',
     title: 'Making Beautiful Memories 🌸',
     date: 'Just You & Me',
     note: 'Looking forward to celebrating a hundred more birthdays with you by my side.',
@@ -39,7 +39,7 @@ const MEMORIES = [
   },
   {
     id: 5,
-    url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&auto=format&fit=crop&q=80',
+    url: '/photo5.jpg',
     title: 'Making Beautiful Memories 🌸',
     date: 'Just You & Me',
     note: 'Looking forward to celebrating a hundred more birthdays with you by my side.',
@@ -47,7 +47,7 @@ const MEMORIES = [
   },
     {
     id: 6,
-    url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&auto=format&fit=crop&q=80',
+    url: '/photo11.jpg',
     title: 'Making Beautiful Memories 🌸',
     date: 'Just You & Me',
     note: 'Looking forward to celebrating a hundred more birthdays with you by my side.',
@@ -113,14 +113,22 @@ export default function StepMemories({ onNext }) {
             {/* Washi Tape Accent */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-rose-200/70 backdrop-blur-sm -rotate-2 rounded-sm shadow-inner pointer-events-none" />
 
-            {/* Photo */}
-            <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-rose-50 border border-slate-100 relative group">
+            {/* Photo Container (Displays image in its 100% actual position & aspect ratio without cropping) */}
+            <div className="w-full aspect-square rounded-xl overflow-hidden bg-rose-50/60 border border-slate-100 relative group flex items-center justify-center">
+              {/* Blurred Ambient Backdrop for seamless natural aesthetic */}
+              <img
+                src={current.url}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover blur-md opacity-25 scale-110 pointer-events-none select-none"
+              />
+              {/* Actual Image in full original dimensions & position */}
               <img
                 src={current.url}
                 alt={current.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="relative z-10 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute bottom-2 right-2 bg-black/40 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded-full">
+              <div className="absolute bottom-2 right-2 z-20 bg-black/40 backdrop-blur-sm text-white text-[10px] px-2 py-0.5 rounded-full">
                 {current.date}
               </div>
             </div>
